@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts Graph Example</title>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="height: 100%"></div>
+
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const dom = document.getElementById('container');
+            const chart = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+
+            const option = {
+                title: {
+                    text: '计算机基础',
+                },
+                tooltip: {},
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        layout: 'none',
+                        symbolSize: 50,
+                        roam: true,
+                        label: {
+                            show: true
+                        },
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 10],
+                        edgeLabel: {
+                            fontSize: 20
+                        },
+                        data: [
+                            { name: '高等数学',         x: 100, y: 100, link: 'https://www.bilibili.com/video/BV1Eb411u7Fw/?share_source=copy_web' },
+                            { name: '线性代数',         x: 300, y: 100, link: 'https://www.bilibili.com/video/BV1aW411Q7x1/?share_source=copy_web' },
+                            { name: '概率与统计',       x: 500, y: 100, link: 'https://www.bilibili.com/video/BV1ot411y7mU/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'C语言',            x: 700, y: 100, link: 'https://www.bilibili.com/video/BV1q54y1q79w/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '计算机基础',       x: 400, y: 300, link: '#' },    // # 代表指向自身
+                            { name: '数据结构',         x: 100, y: 500, link: 'https://www.bilibili.com/video/BV1b7411N798/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '计算机组成原理',    x: 300, y: 500, link: 'https://www.bilibili.com/video/BV1ps4y1d73V/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '操作系统',         x: 500, y: 500, link: 'https://www.bilibili.com/video/BV1YE411D7nH/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '计算机网络',       x: 700, y: 500, link: 'https://www.bilibili.com/video/BV19E411D78Q/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '编译原理',         x: 900, y: 500, link: 'https://www.bilibili.com/video/BV1dL4y1H7T8/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '离散数学',         x: 1100, y: 500, link: 'https://www.bilibili.com/video/BV1d7411v7zu/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '计算机基础完成',    x: 400, y: 700, link: '#' },
+
+                        ],
+                        links: [
+                            { source: '高等数学',       target: '计算机基础' }, //lineStyle: { curveness: 0.2 }
+                            { source: '线性代数',       target: '计算机基础' },
+                            { source: '概率与统计',     target: '计算机基础' },
+                            { source: 'C语言',          target: '计算机基础' },
+                            { source: '计算机基础',     target: '数据结构' },
+                            { source: '计算机基础',     target: '计算机组成原理' },
+                            { source: '计算机基础',     target: '操作系统' },
+                            { source: '计算机基础',     target: '计算机网络' },
+                            { source: '计算机基础',     target: '编译原理' },
+                            { source: '计算机基础',     target: '离散数学' },
+                            { source: '数据结构',       target: '计算机基础完成' },
+                            { source: '计算机组成原理',  target: '计算机基础完成' },
+                            { source: '操作系统',       target: '计算机基础完成' },
+                            { source: '计算机网络',     target: '计算机基础完成' },
+                            { source: '编译原理',       target: '计算机基础完成' },
+                            { source: '离散数学',       target: '计算机基础完成' },
+                            // { source: '计算机基础',     target: '计算机基础完成' },
+
+
+
+                        ],
+                        lineStyle: {
+                            opacity: 0.9,
+                            width: 2,
+                            curveness: 0
+                        }
+                    }
+                ]
+            };
+
+            chart.setOption(option);
+
+            // 监听图表的点击事件
+            chart.on('click', function (params) {
+                if (params.dataType === 'node') { // 判断点击的是节点
+                    const nodeData = params.data; // 获取节点数据
+                    if (nodeData.link) { // 判断节点是否有链接
+                        window.open(nodeData.link, '_blank'); // 在新标签页中打开链接
+                    }
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+        });
+    </script>
+</body>
+
+</html>

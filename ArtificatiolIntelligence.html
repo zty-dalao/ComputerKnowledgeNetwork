@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts Graph Example</title>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="height: 100%"></div>
+
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const dom = document.getElementById('container');
+            const chart = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+
+            const option = {
+                title: {
+                    text: '人工智能',
+                },
+                tooltip: {},
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        layout: 'none',
+                        symbolSize: 50,
+                        roam: true,
+                        label: {
+                            show: true
+                        },
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 10],
+                        edgeLabel: {
+                            fontSize: 20
+                        },
+                        data: [
+                            { name: '计算机基础完成', x: 400, y: 50, link: './ComputerBasicCourse.html' },
+                            { name: '人工智能', x: 400, y: 250, link: 'https://book.douban.com/subject/36152133/' },
+                            { name: '机器学习', x: 100, y: 400, link: '#' },
+                            { name: '深度学习', x: 300, y: 400, link: '#' },
+                            { name: '自然语言处理', x: 500, y: 400, link: '#' },
+                            { name: '计算机视觉', x: 700, y: 400, link: '#' },
+                            { name: '知识图谱', x: 900, y: 400, link: '#' },    // # 代表指向自身
+                            { name: '机器学习:李宏毅', x: 0, y: 600, link: 'https://www.bilibili.com/video/BV1Wv411h7kN/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '斯坦福CS231n', x: 150, y: 600, link: 'https://cs231n.stanford.edu/' },
+                            { name: '动手机器学习', x: 300, y: 600, link: 'https://www.bilibili.com/video/BV1L5S2Y9ESV/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '传统机器学习结束', x: 150, y: 800, link: 'https://www.bilibili.com/video/BV1L5S2Y9ESV/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '最优化理论', x: 450, y: 600, link: 'https://www.bilibili.com/video/BV1Lk4y1x7AE/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'pytorch深度学习入门', x: 350, y: 800, link: 'https://www.bilibili.com/video/BV1hE411t7RN/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '动手学深度学习', x: 550, y: 800, link: 'https://www.bilibili.com/video/BV1if4y147hS/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '传统深度学习结束', x: 450, y: 1000, link: '#' },
+                            { name: '自然语言处理:李宏毅', x: 700, y: 1000, link: 'https://www.bilibili.com/video/BV1hM4y157xX/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '动手学自然语言处理', x: 700, y: 1200, link: 'https://hnlp.boyuai.com/' },
+                            { name: '自然语言处理结束', x: 700, y: 1400, link: '#' },
+                            { name: 'Learning OpenCV 5(zlib)', x: 750, y: 600, link: '#' },
+                            { name: 'Computer Version:MLI', x: 1050, y: 700, link: 'https://zhuanlan.zhihu.com/p/34401853' },
+                            { name: '计算机视觉(吴恩达)', x: 850, y: 850, link: 'https://www.bilibili.com/video/BV1CNX5YnEBB/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '动手学计算机视觉', x: 1050, y: 1050, link: 'https://hcv.boyuai.com/' },
+                            { name: '计算机视觉结束', x: 1050, y: 1250, link: '#' },
+                        ],
+                        links: [
+                            { source: '计算机基础完成', target: '人工智能' }, //lineStyle: { curveness: 0.2 }
+                            { source: '人工智能', target: '机器学习' },
+                            { source: '人工智能', target: '深度学习' },
+                            { source: '人工智能', target: '自然语言处理' },
+                            { source: '人工智能', target: '计算机视觉' },
+                            { source: '人工智能', target: '知识图谱' },
+                            { source: '机器学习', target: '机器学习:李宏毅' },
+                            { source: '机器学习', target: '斯坦福CS231n' },
+                            { source: '机器学习', target: '动手机器学习' },
+                            { source: '机器学习:李宏毅', target: '传统机器学习结束' },
+                            { source: '斯坦福CS231n', target: '传统机器学习结束' },
+                            { source: '动手机器学习', target: '传统机器学习结束' },
+                            { source: '深度学习', target: '最优化理论' },
+                            { source: '最优化理论', target: 'pytorch深度学习入门' },
+                            { source: '最优化理论', target: '动手学深度学习' },
+                            { source: 'pytorch深度学习入门', target: '传统深度学习结束' },
+                            { source: '动手学深度学习', target: '传统深度学习结束' },
+                            { source: '自然语言处理', target: '自然语言处理:李宏毅' },
+                            { source: '传统机器学习结束', target: '自然语言处理:李宏毅' },
+                            { source: '传统深度学习结束', target: '自然语言处理:李宏毅' },
+                            { source: '自然语言处理:李宏毅', target: '动手学自然语言处理' },
+                            { source: '动手学自然语言处理', target: '自然语言处理结束' },
+                            { source: '计算机视觉', target: 'Learning OpenCV 5(zlib)' },
+                            { source: '计算机视觉', target: 'Computer Version:MLI' },
+                            { source: '传统机器学习结束', target: 'Computer Version:MLI',lineStyle:{curveness: 0.1} },
+                            { source: 'Learning OpenCV 5(zlib)', target: '计算机视觉(吴恩达)',lineStyle:{curveness: 0.1} },
+                            { source: 'Computer Version:MLI', target: '计算机视觉(吴恩达)',lineStyle:{curveness: 0.1} },
+                            { source: '传统深度学习结束', target: '计算机视觉(吴恩达)'},
+                            { source: '计算机视觉(吴恩达)', target: '动手学计算机视觉'},
+                            { source: '动手学计算机视觉', target: '计算机视觉结束'},
+
+                        ],
+                        lineStyle: {
+                            opacity: 0.9,
+                            width: 2,
+                            curveness: 0
+                        }
+                    }
+                ]
+            };
+
+            chart.setOption(option);
+
+            // 监听图表的点击事件
+            chart.on('click', function (params) {
+                if (params.dataType === 'node') { // 判断点击的是节点
+                    const nodeData = params.data; // 获取节点数据
+                    if (nodeData.link) { // 判断节点是否有链接
+                        window.open(nodeData.link, '_blank'); // 在新标签页中打开链接
+                    }
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+        });
+    </script>
+</body>
+
+</html>

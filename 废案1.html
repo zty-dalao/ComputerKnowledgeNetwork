@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      var dom = document.getElementById('container');
+      var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+      });
+      var app = {};
+
+      var option;
+
+      option = {
+        title: {
+          text: 'Basic Graph'
+        },
+        tooltip: {},
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        series: [
+          {
+            type: 'graph',
+            layout: 'none',
+            symbolSize: 50,
+            roam: true,
+            label: {
+              show: true
+            },
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [4, 10],
+            edgeLabel: {
+              fontSize: 20
+            },
+            data: [
+              {
+                name: '高等数学',
+                links: 'https://www.baidu.com',
+                x: 100,
+                y: 100},
+              {
+                name: '线性代数',
+                x: 300,
+                y: 100
+              },
+              {
+                name: '概率与统计',
+                x: 500,
+                y: 100
+              },
+              {
+                name: 'C语言',
+                x: 700,
+                y: 100
+              },
+              {
+                name: '计算机基础',
+                x: 400,
+                y: 300
+              },
+              {
+                name: '数据结构',
+                x: 100,
+                y: 500
+              },
+              {
+                name: '计算机组成原理',
+                x: 300,
+                y: 500
+              },
+              {
+                name: '操作系统',
+                x: 500,
+                y: 500
+              },
+              {
+                name: '计算机网络',
+                x: 700,
+                y: 500
+              },
+
+            ],
+            links: [
+              {
+                source: '高等数学',
+                target: '计算机基础',
+                // lineStyle: {
+                //   curveness: 0.2
+                // }
+              },
+              {
+                source: '线性代数',
+                target: '计算机基础'
+              },
+              {
+                source: '概率与统计',
+                target: '计算机基础'
+              },
+              {
+                source: 'C语言',
+                target: '计算机基础'
+              },
+              {
+                source: '计算机基础',
+                target: '数据结构'
+              },
+              {
+                source: '计算机基础',
+                target: '计算机组成原理'
+              },
+              {
+                source: '计算机基础',
+                target: '操作系统'
+              },
+              {
+                source: '计算机基础',
+                target: '计算机网络'
+              },
+            ],
+            lineStyle: {
+              opacity: 0.9,
+              width: 2,
+              curveness: 0
+            }
+          }
+        ]
+      };
+
+      if (option && typeof option === 'object') {
+        myChart.setOption(option);
+      }
+
+      // 监听图表的点击事件
+      chart.on('click', function (params) {
+        if (params.dataType === 'node') { // 判断点击的是节点
+          const nodeData = params.data; // 获取节点数据
+          if (nodeData.link) { // 判断节点是否有链接
+            window.open(nodeData.link, '_blank'); // 在新标签页中打开链接
+          }
+        }
+      });
+
+      window.addEventListener('resize', myChart.resize);
+    });
+  </script>
+</body>
+
+</html>
