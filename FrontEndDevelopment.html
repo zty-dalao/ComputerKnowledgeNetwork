@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>FrontEndDevelopment</title>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="height: 100%"></div>
+
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const dom = document.getElementById('container');
+            const chart = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+
+            const option = {
+                title: {
+                    text: '前端开发',
+                },
+                tooltip: {},
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        layout: 'none',
+                        symbolSize: 50,
+                        roam: true,
+                        label: {
+                            show: true
+                        },
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 10],
+                        edgeLabel: {
+                            fontSize: 20
+                        },
+                        data: [
+                            { name: '计算机基础完成', x: 400, y: 50, link: './ComputerBasicCourse.html' },
+                            { name: 'HTML&CSS', x: 100, y: 250, link: 'https://www.bilibili.com/video/BV1p84y1P7Z5/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'JavaScript', x: 300, y: 200, link: 'https://www.bilibili.com/video/BV1Y84y1L7Nn/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'ES6', x: 500, y: 250, link: 'https://www.bilibili.com/video/BV1Y84y1L7Nn/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Linux基础', x: 700, y: 250, link: 'https://www.bilibili.com/video/BV19W4y1w7cM/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Git&Github', x: 900, y: 250, link: 'https://www.bilibili.com/video/BV1NK421Y7XZ/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'TypeScript', x: 300, y: 300, link: 'https://www.bilibili.com/video/BV1YS411w7Bf/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '前端基础完成', x: 300, y: 450, link: '#' },    // # 代表指向自身
+                            { name: 'Node.js', x: 300, y: 650, link: 'https://www.bilibili.com/video/BV1gM411W7ex/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Promise', x: 500, y: 650, link: 'https://www.bilibili.com/video/BV1Tm4y1h7SY/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Axios', x: 700, y: 650, link: 'https://www.bilibili.com/video/BV1wr4y1K7tq/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'ajax', x: 900, y: 650, link: 'https://www.bilibili.com/video/BV1WC4y1b78y/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Vue', x: 100, y: 850, link: 'https://www.bilibili.com/video/BV1Zy4y1K7SH/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'React', x: 300, y: 850, link: 'https://www.bilibili.com/video/BV1wy4y1D7JT/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Angular', x: 500, y: 850, link: 'https://www.bilibili.com/video/BV1yY41177yK/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Webpack', x: 700, y: 850, link: 'https://www.bilibili.com/video/BV1MN411y7pw/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Vite', x: 900, y: 850, link: ' https://www.bilibili.com/video/BV1Xh411V7b5/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Nuxt.js', x: 100, y: 1050, link: 'https://www.bilibili.com/video/BV1u84y1R7d1/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: 'Next.js', x: 300, y: 1050, link: 'https://www.bilibili.com/video/BV1G54y1o7RP/?share_source=copy_web&vd_source=bcef5609a416cc070dc3c4cfa3f5b621' },
+                            { name: '前端学习结束', x: 500, y: 1250, link: '#' },
+                            
+                        ],
+                        links: [
+                            { source: '计算机基础完成', target: 'HTML&CSS' }, //lineStyle: { curveness: 0.2 }
+                            { source: '计算机基础完成', target: 'JavaScript' },
+                            { source: 'JavaScript', target: 'ES6' },
+                            { source: '计算机基础完成', target: 'Linux基础完成' },
+                            { source: '计算机基础完成', target: 'Git&Github' },
+                            { source: '计算机基础完成', target: 'Linux基础' },
+                            { source: 'HTML&CSS', target: '前端基础完成' },
+                            { source: 'ES6', target: '前端基础完成' },
+                            { source: 'ES6', target: 'TypeScript' },
+                            { source: 'TypeScript', target: '前端基础完成'},
+                            { source: 'Linux基础', target: '前端基础完成'},
+                            { source: 'Git&Github', target: '前端基础完成'},
+                            { source: '前端基础完成', target: 'Node.js'},
+                            { source: '前端基础完成', target: 'Promise'},
+                            { source: 'Promise', target: 'Axios'},
+                            { source: 'Promise', target: 'ajax',lineStyle: { curveness: 0.2 }},
+                            { source: 'ajax', target: 'Node.js',lineStyle: { curveness: 0.2 }},
+                            { source: 'Promise', target: 'Node.js'},
+                            { source: 'Node.js', target: 'Vue'},
+                            { source: 'Node.js', target: 'React'},
+                            { source: 'Node.js', target: 'Angular'},
+                            { source: 'Node.js', target: 'Webpack'},
+                            { source: 'Node.js', target: 'Vite'},
+                            { source: 'Vue', target: 'Nuxt.js'},
+                            { source: 'React', target: 'Next.js'},
+                            { source: 'Nuxt.js', target: '前端学习结束'},
+                            { source: 'Next.js', target: '前端学习结束'},
+                            { source: 'Angular', target: '前端学习结束'},
+                            { source: 'Webpack', target: '前端学习结束'},
+                            { source: 'Vite', target: '前端学习结束'},
+                            
+
+                        ],
+                        lineStyle: {
+                            opacity: 0.9,
+                            width: 2,
+                            curveness: 0
+                        }
+                    }
+                ]
+            };
+
+            chart.setOption(option);
+
+            // 监听图表的点击事件
+            chart.on('click', function (params) {
+                if (params.dataType === 'node') { // 判断点击的是节点
+                    const nodeData = params.data; // 获取节点数据
+                    if (nodeData.link) { // 判断节点是否有链接
+                        window.open(nodeData.link, '_blank'); // 在新标签页中打开链接
+                    }
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+        });
+    </script>
+</body>
+
+</html>
